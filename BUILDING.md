@@ -575,6 +575,11 @@ to run it again before invoking `make -j4`.
   If not installed in the default location, it needs to be manually added
   to `PATH`. A build with the `openssl-no-asm` option does not need this, nor
   does a build targeting ARM64 Windows.
+* Building on Windows 11 on Raspberry Pi 4, in configure.py
+  `def check_compiler(o):`
+      `if not options.openssl_no_asm and options.dest_cpu in ('x86', 'x64'):`  change to `if not options.openssl_no_asm or options.dest_cpu in ('x86', 'x64'):`
+      
+  
 
 Optional requirements to build the MSI installer package:
 
